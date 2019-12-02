@@ -1,0 +1,195 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #ccc;
+    font: 16px/1.4 Arial Helvetica sans-serif;
+    color: #333;
+}
+
+li, ol {
+    overflow: hidden;
+    list-style-type: circle;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+}
+/* Title */
+
+#title {
+    margin: .5em 0;
+    text-align: center;
+    font-size: 3em;
+}
+span, i {
+    color: #29a329;
+}
+/* Input field */
+.setTask {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    vertical-align: middle;
+    position: relative;
+    
+}
+
+.main-input {
+    display: grid;
+    position: relative;
+    height: 50px;
+    width: calc(100% - 18%);
+    margin: 15px;
+    font-size: 1.5em;
+    border: none;
+    border-radius: 15px;
+    background-color: #ebebeb;
+}
+
+
+.setTask::before {
+    content: attr(data-text);
+    display: block;
+    position: absolute;
+    background-color: none;
+    
+    bottom: 0;
+    z-index: 1;
+    left: 0;
+    padding: 5px;
+    margin-left: 1.5em;
+    margin-bottom: 1.5em;
+    border-radius: 5px;
+    transform: scale(1);
+    transition: ease-out;
+}
+/* Add to list button */
+.addToList {
+    width: 150px;
+    height: 50px;
+    cursor: pointer;
+    margin: 15px 0;
+    font-family: 'Lato';
+    background: none;
+    text-transform: uppercase;
+    padding: 8px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 15px;
+    outline: none;
+    position: relative;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition: all 0.3s;
+}
+
+.addToList::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    transition:  0.3s;
+}
+
+.addToList::before {
+    font-family: 'FontAwesome';
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* Date */
+.date {
+    text-align: center;
+    margin: 0;
+}
+
+
+
+/* Todo  field */
+#fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#todo, #notes {
+    margin: 15px;
+    background-color: #ebebeb;
+    min-height: 400px;
+    border: 1px solid #ebebeb;
+    border-radius: 15px;
+    box-shadow: 6px -4px 24px -6px;
+}
+
+
+h3 {
+    text-align: center;
+    margin: 5px 10px;
+    font-weight: 700;
+}
+
+.todo-list,
+.notes-list {
+    margin: 0 15px;
+    font-size: 1.2em;
+}
+
+.checkBtn,
+.delBtn {
+    display: flex;
+    float: right;
+    color: red;
+    margin: 3px;
+    padding: 5px;
+    font-size: 20px;
+}
+
+.checked {
+    color: green;
+}
+
+
+/* Shake effect */
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+  
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+  
+    30%, 50%, 70% {
+      transform: translate3d(-3px, 0, 0);
+    }
+  
+    40%, 60% {
+      transform: translate3d(3px, 0, 0);
+    }
+  }
+  
+  .apply-shake {
+      animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  }
+
+@media screen and  (max-width: 992px) {
+    #fields {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    #title {
+        font-size: 2em;
+    }
+}
