@@ -13,25 +13,28 @@
         <h1 id="title"><i class="fas fa-book-open"></i>My<span>TODO</span>List</h1>
 
             <div class="setTask">
-                <input type="text" class="main-input" id="main-input">
-                <input type="submit" class="addToList" value="Add to List">
+                <input type="text" class="main-input" id="main-input" required>
+                <div class="addTo">
+                    <input type="submit" class="addToList todo" value="Add TODO">
+                    <input type="submit" class="addToList goal" value="Add Goal">
+                </div>
             </div>
     
             <div id="fields">
                 <div id="todo">
                     <h3>TODO</h3>
-                    <p class="date"></p>
-                    <ol class="todo-list">
-                    </ol>
+                    <p class="date todoDate"></p>
+                    <ol class="todo-list"></ol>
                 </div>
         
                 <div id="notes">
                     <h3>Week Goals</h3>
-                    <p class="date"></p>
+                    <p class="date goalDate"></p>
                         <ol class="notes-list"></ol>
                 </div>
             </div>
     </div>
+
     <script src="app.js"></script>
 </body>
 </html>

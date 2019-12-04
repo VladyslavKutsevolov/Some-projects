@@ -8,11 +8,11 @@ body {
     background-color: #ccc;
     font: 16px/1.4 Arial Helvetica sans-serif;
     color: #333;
+    height: 100%;
 }
 
-li, ol {
+li {
     overflow: hidden;
-    list-style-type: circle;
 }
 
 .container {
@@ -31,21 +31,16 @@ span, i {
 }
 /* Input field */
 .setTask {
-    display: flex;
-    justify-content: center;
-    text-align: center;
-    box-sizing: border-box;
-    vertical-align: middle;
     position: relative;
-    
+    display: grid;
+    grid-template-columns: 2fr 1fr;
 }
 
 .main-input {
-    display: grid;
     position: relative;
     height: 50px;
-    width: calc(100% - 18%);
-    margin: 15px;
+    width: 95%;
+    margin: 10px;
     font-size: 1.5em;
     border: none;
     border-radius: 15px;
@@ -58,23 +53,27 @@ span, i {
     display: block;
     position: absolute;
     background-color: none;
-    
     bottom: 0;
-    z-index: 1;
+    z-index: 2;
     left: 0;
     padding: 5px;
     margin-left: 1.5em;
-    margin-bottom: 1.5em;
+    margin-bottom: 1.2em;
     border-radius: 5px;
     transform: scale(1);
     transition: ease-out;
 }
 /* Add to list button */
+.addTo {
+    display: flex;
+    vertical-align: middle;
+}
+
 .addToList {
     width: 150px;
     height: 50px;
     cursor: pointer;
-    margin: 15px 0;
+    margin: 10px;
     font-family: 'Lato';
     background: none;
     text-transform: uppercase;
@@ -123,8 +122,15 @@ span, i {
     grid-template-columns: 1fr 1fr;
 }
 
+#todo ol,
+#notes ol {
+    overflow: hidden;
+    overflow-y:scroll;
+    height: 320px;
+}
+
 #todo, #notes {
-    margin: 15px;
+    margin: 10px;
     background-color: #ebebeb;
     min-height: 400px;
     border: 1px solid #ebebeb;
@@ -141,9 +147,11 @@ h3 {
 
 .todo-list,
 .notes-list {
-    margin: 0 15px;
+    margin: 15px;
     font-size: 1.2em;
+    list-style-position: inside;
 }
+
 
 .checkBtn,
 .delBtn {
@@ -191,5 +199,31 @@ h3 {
 
     #title {
         font-size: 2em;
+    }
+
+    .setTask{
+        display: block;
+        width: 100%;
+    }
+
+    .addTo {
+        display: flex;
+        justify-content: center;
+    }
+
+    .setTask::before {
+        content: attr(data-text);
+        display: block;
+        position: absolute;
+        background-color: none;
+        bottom: 50%;
+        z-index: 1;
+        left: 0;
+        padding: 5px;
+        margin-left: 1.5em;
+        margin-bottom: 1.2em;
+        border-radius: 5px;
+        transform: scale(1);
+        transition: ease-out;
     }
 }

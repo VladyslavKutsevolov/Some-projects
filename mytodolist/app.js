@@ -1,30 +1,59 @@
-const addToList = document.querySelector('.addToList');
+const addToList = document.querySelector('.todo');
 const todoList = document.querySelector('.todo-list');
+const goal = document.querySelector('.goal');
+
 
 
 // Add Event Listener
-addToList.addEventListener('click', addTask);
+todo.addEventListener('click', addTask);
 todoList.addEventListener('click' , doneTask);
 todoList.addEventListener('click', removeTask);
+goal.addEventListener('click', addGoal);
 
-
-function addTask(e) {
+// Add task
+function addTask() {
     const addItem = document.querySelector('.main-input').value;
-
     if(addItem === ''){
-        const shake =  document.getElementById('main-input')
-        shake.classList.add('apply-shake');
-        const pop = document.querySelector('.setTask');
-        pop.setAttribute('data-text', 'Please enter your task!');
-        setTimeout(() => {
-            pop.removeAttribute('data-text');
-            shake.classList.remove('apply-shake');
-        }, 1000);
+        ifEmpty();
     } else {
+        createLi(addItem);
+    }
+    clearFields();
+    
+}
+
+// Add Goal 
+
+// function addGoal() {
+//     const addItem = document.querySelector('.main-input').value;
+//     if(addItem === ''){
+//         ifEmpty();
+//     } else {
+//         createLi(addItem);
+//     }
+//     clearFields();
+    
+// }
+
+// If empty
+function ifEmpty() {
+    const shake =  document.getElementById('main-input')
+    shake.classList.add('apply-shake');
+    const pop = document.querySelector('.setTask');
+    pop.setAttribute('data-text', 'Please enter your task!');
+    setTimeout(() => {
+        pop.removeAttribute('data-text');
+        shake.classList.remove('apply-shake');
+    }, 1000);
+    
+}
+
+// Create list item 
+function createLi(val) {
         // Add task to list
         const li = document.createElement('li');
         li.classList = 'list-item';
-        li.appendChild(document.createTextNode(addItem));
+        li.appendChild(document.createTextNode(val));
         todoList.appendChild(li);
         // Create check button
         const checkBtn = document.createElement('i');
@@ -35,10 +64,8 @@ function addTask(e) {
         const delBtn = document.createElement('i');
         delBtn.className = 'fas fa-trash-alt delBtn';
         li.appendChild(delBtn);
-    }
-    clearFields();
-
 }
+
 // Clear input field
 function clearFields() {
     document.querySelector('.main-input').value = '';
@@ -51,7 +78,7 @@ function doneTask(e) {
         checkMark.toggle('checked');
     }
     const list =  document.getElementsByClassName('list-item'); 
-    for(let li of list) {
+    for(const li of list) {
         if(li.firstElementChild.classList.contains('checked')){
             li.setAttribute('style', 'text-decoration: line-through');
         } else {
@@ -59,7 +86,6 @@ function doneTask(e) {
         }
     }
 }
-
 
 // Remove a task
 function removeTask(e){
@@ -70,12 +96,21 @@ function removeTask(e){
 }
 // Set Date
 (() => {
-    const event = new Date();
+    const date = new Date();
     const options = { weekday: 'long', year: 'numeric', month: 'short', day: 'numeric' };
-    const date = event.toLocaleDateString('en-us', options);
+    const getWeek = getNumberOfWeek();
+    const todoDate = date.toLocaleDateString('en-us', options);
     
-    document.querySelector('.date').innerHTML = date;
+    document.querySelector('.goalDate').innerHTML = `Week: ${getWeek}`;
+    document.querySelector('.todoDate').innerHTML = todoDate;
 
 })()
+
+function getNumberOfWeek() {
+    const today = new Date();
+    const firstDayOfYear = new Date(today.getFullYear(), 0, 1);
+    const pastDaysOfYear = (today - firstDayOfYear) / 86400000;
+    return Math.ceil((pastDaysOfYear + firstDayOfYear.getDay() + 1) / 7);
+}
 
 
