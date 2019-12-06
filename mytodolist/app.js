@@ -1,6 +1,7 @@
-const addToList = document.querySelector('.todo');
+const todo = document.querySelector('.todo');
 const todoList = document.querySelector('.todo-list');
 const goal = document.querySelector('.goal');
+const goalList = document.querySelector('.goal-list');
 
 
 
@@ -9,6 +10,8 @@ todo.addEventListener('click', addTask);
 todoList.addEventListener('click' , doneTask);
 todoList.addEventListener('click', removeTask);
 goal.addEventListener('click', addGoal);
+goalList.addEventListener('click' , doneTask);
+goalList.addEventListener('click', removeTask);
 
 // Add task
 function addTask() {
@@ -16,7 +19,20 @@ function addTask() {
     if(addItem === ''){
         ifEmpty();
     } else {
-        createLi(addItem);
+        // Add task to list
+        const li = document.createElement('li');
+        li.classList = 'list-item';
+        li.appendChild(document.createTextNode(addItem));
+        todoList.appendChild(li);
+        // Create check button
+        const checkBtn = document.createElement('i');
+        checkBtn.className = 'fas fa-check-circle checkBtn';
+        li.appendChild(checkBtn);
+        
+        // Create delete button
+        const delBtn = document.createElement('i');
+        delBtn.className = 'fas fa-trash-alt delBtn';
+        li.appendChild(delBtn);
     }
     clearFields();
     
@@ -24,16 +40,29 @@ function addTask() {
 
 // Add Goal 
 
-// function addGoal() {
-//     const addItem = document.querySelector('.main-input').value;
-//     if(addItem === ''){
-//         ifEmpty();
-//     } else {
-//         createLi(addItem);
-//     }
-//     clearFields();
+function addGoal() {
+    const addItem = document.querySelector('.main-input').value;
+    if(addItem === ''){
+        ifEmpty();
+    } else {
+            // Add task to list
+        const li = document.createElement('li');
+        li.classList = 'list-item';
+        li.appendChild(document.createTextNode(addItem));
+        goalList.appendChild(li);
+        // Create check button
+        const checkBtn = document.createElement('i');
+        checkBtn.className = 'fas fa-check-circle checkBtn';
+        li.appendChild(checkBtn);
+        
+        // Create delete button
+        const delBtn = document.createElement('i');
+        delBtn.className = 'fas fa-trash-alt delBtn';
+        li.appendChild(delBtn);
+    }
+    clearFields();
     
-// }
+}
 
 // If empty
 function ifEmpty() {
@@ -90,8 +119,14 @@ function doneTask(e) {
 // Remove a task
 function removeTask(e){
     if(e.target.classList.contains('delBtn')){
-        let li = e.target.parentElement;
-        todoList.removeChild(li);
+        const li = e.target.parentElement;
+        const checkParent = e.target.parentElement.parentElement;
+
+        if(checkParent === goalList) {
+            goalList.removeChild(li);
+        } else {
+            todoList.removeChild(li);
+        }
     }
 }
 // Set Date
