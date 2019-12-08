@@ -1,0 +1,24 @@
+{
+  "name": "some_projects",
+  "version": "1.0.0",
+  "description": "Simple todo website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index",
+    "nodemon": "nodemon indexno"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VladyslavKutsevolov/Some-projects.git"
+  },
+  "author": "Vladyslav Kutsevolov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VladyslavKutsevolov/Some-projects/issues"
+  },
+  "homepage": "https://github.com/VladyslavKutsevolov/Some-projects#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "nodemon": "^2.0.1"
+  }
+}

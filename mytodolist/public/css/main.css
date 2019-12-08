@@ -6,7 +6,7 @@
 
 body {
     background-color: #ccc;
-    font: 16px/1.4 Arial Helvetica sans-serif;
+    font: 16px/1.4 'Lato' sans-serif;
     color: #333;
     height: 100%;
 }
@@ -15,20 +15,51 @@ li {
     overflow: hidden;
 }
 
-.container {
-    width: 80%;
-    margin: auto;
+a{
+    text-decoration: none;
+    color: #f4f4f4;
 }
+/* Header */
+#header {
+    box-sizing: border-box;
+    background: #333;
+    margin-bottom: 1em;
+}
+
 /* Title */
 
 #title {
-    margin: .5em 0;
-    text-align: center;
+    margin: .2em;
     font-size: 3em;
 }
 span, i {
     color: #29a329;
 }
+
+.inner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.menu {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+
+}
+
+.menu li {
+    margin-right: 1em;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    min-height: 100%;
+}
+
 /* Input field */
 .setTask {
     position: relative;
@@ -167,6 +198,17 @@ h3 {
     color: green;
 }
 
+/* Footer */
+footer {
+    background: #333;
+    color: #f4f4f4;
+    height: 50px;
+    margin-top: 35px;
+    vertical-align: middle;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Shake effect */
 @keyframes shake {
@@ -192,6 +234,10 @@ h3 {
   }
 
 @media screen and  (max-width: 992px) {
+    #header {
+        font-size: .8em;
+    }
+
     #fields {
         display: grid;
         grid-template-columns: 1fr;
@@ -225,5 +271,11 @@ h3 {
         border-radius: 5px;
         transform: scale(1);
         transition: ease-out;
+    }
+}
+
+@media screen and  (max-width: 768px) {
+    #header {
+        font-size: .6em;
     }
 }

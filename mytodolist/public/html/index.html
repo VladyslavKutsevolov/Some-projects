@@ -5,13 +5,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <script  src="https://kit.fontawesome.com/f60010782b.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>toDoList</title>
 </head>
 <body>
+    <header id="header">
+       <div class="inner-header">
+            <h1 id="title"><a href="#"><i class="fas fa-book-open"></i>My<span>TODO</span>List</a></h1>
+        <nav id="main-nav">
+            <ul class="menu">
+                <li><a href="calendar.html">Calendar</a></li>
+                <li><a href="#">Login</a></li>
+                <li><a href="#">Register</a></li>
+            </ul>
+        </nav>
+       </div>
+    </header>
     <div class="container">
-        <h1 id="title"><i class="fas fa-book-open"></i>My<span>TODO</span>List</h1>
-
             <div class="setTask">
                 <input type="text" class="main-input" id="main-input" required>
                 <div class="addTo">
@@ -34,7 +44,7 @@
                 </div>
             </div>
     </div>
-
-    <script src="app.js"></script>
+    <footer><p>Copyright &copy 2019</p></footer>
+    <script src="js/app.js"></script>
 </body>
 </html>
